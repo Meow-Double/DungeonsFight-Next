@@ -1,0 +1,8 @@
+.title20_bold {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.text16_regular {
+  color: vad(--text-color);
+}

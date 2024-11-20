@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next eslint . --ext ts --ext tsx --ext js",
+    "format": "prettier --write \"**/*.{js,ts,tsx}\"",
+    "stylelint": "stylelint \"**/*.css\"",
+    "pretty": "yarn format && yarn lint --fix && yarn stylelint --fix",
     "prepare": "husky",
     "lint:staged": "lint-staged"
   },
@@ -23,6 +26,7 @@
     ]
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.9",
     "next": "15.0.3",

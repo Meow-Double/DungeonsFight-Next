@@ -1,0 +1,12 @@
+.footer {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  background-color: var(--section-color);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
