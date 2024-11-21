@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import styles from "./Button.module.css";
 
-type ButtonVariant = "default";
+type ButtonVariant = "default" | "outline" | "accent" | "section";
 
 interface ButtonProps extends ComponentPropsWithRef<"button"> {
   variant?: ButtonVariant;
@@ -31,6 +31,7 @@ export const Button = ({
     {
       [styles.disabled]: disabled,
       [styles.loading]: loading,
+      [styles.icon]: startIcon || endIcon,
     },
     className
   );
@@ -42,9 +43,9 @@ export const Button = ({
       className={classes}
       {...props}
     >
-      {!!startIcon && <div className={styles.start_icon}>{startIcon}</div>}
+      {!!startIcon && startIcon}
       <span className={clsx(styles.button_text)}>{children}</span>
-      {!!endIcon && <div className={styles.end_icon}>{endIcon}</div>}
+      {!!endIcon && endIcon}
     </button>
   );
 };

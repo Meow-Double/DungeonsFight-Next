@@ -9,8 +9,12 @@ export const Footer = () => {
       <Container variant="footer">
         <div className={styles.inner}>
           <Logo />
-          <Typography>Колекционка исторических предметов</Typography>
-          <Typography>©DungeonFight {NowYear}</Typography>
+          <Typography variant="text16_regular">
+            Колекционка исторических предметов
+          </Typography>
+          <Typography variant="text16_regular">
+            ©DungeonFight {NowYear}
+          </Typography>
         </div>
       </Container>
     </footer>

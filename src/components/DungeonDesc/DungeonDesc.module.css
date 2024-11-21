@@ -1,0 +1,23 @@
+.inner {
+  display: grid;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  gap: 20px;
+  grid-template-columns: 24px auto;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.btn {
+  width: 24px;
+  height: 24px;
+}
+
+.adwards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}

@@ -1,0 +1,55 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 280px;
+  height: 380px;
+  border-radius: 4px;
+}
+
+.background {
+  position: absolute;
+  border-radius: inherit;
+  filter: brightness(30%);
+  image-rendering: pixelated;
+  object-fit: cover;
+  transition: all 0.1s ease;
+}
+
+.card:hover .background {
+  transform: scale(1.04);
+}
+
+.content {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+}
+
+.title {
+  margin-bottom: 4px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.type {
+  text-transform: capitalize;
+}
+
+.info_item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.info_title {
+  color: var(--accent-color);
+}

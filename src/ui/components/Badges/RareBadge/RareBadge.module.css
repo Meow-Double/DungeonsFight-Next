@@ -1,0 +1,27 @@
+.badge {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--primary-color);
+  border-radius: 200px;
+}
+
+.ordinary {
+  background-color: #a78a84;
+}
+
+.rare {
+  background-color: #53cf6e;
+}
+
+.average {
+  background-color: #478bf1;
+}
+
+.epic {
+  background-color: #c94ec4;
+}
+
+.legendary {
+  background-color: #ff4848;
+}

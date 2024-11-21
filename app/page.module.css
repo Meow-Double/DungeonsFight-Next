@@ -1,0 +1,11 @@
+.wrapper {
+  margin-block: 60px;
+}
+
+.dungeons_cards {
+  display: grid;
+  width: 100%;
+  justify-content: space-between;
+  gap: 40px;
+  grid-template-columns: repeat(4, minmax(280px, 1fr));
+}

@@ -6,10 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next eslint . --ext ts --ext tsx --ext js",
+    "lint": "next eslint",
+    "lint:fix": "eslint --fix .",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "stylelint": "stylelint \"**/*.css\"",
-    "pretty": "yarn format && yarn lint --fix && yarn stylelint --fix",
+    "pretty": "npm run format && npm run lint --fix && npm run stylelint --fix",
     "prepare": "husky",
     "lint:staged": "lint-staged"
   },

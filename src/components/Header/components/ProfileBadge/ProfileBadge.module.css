@@ -1,0 +1,19 @@
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 16px;
+  border-radius: 200px;
+  background-color: var(--section-color);
+  gap: 8px;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 200px;
+}
+
+.name {
+  font-weight: 500;
+}

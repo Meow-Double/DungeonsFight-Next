@@ -6,6 +6,8 @@
   --primary-color9: rgb(240 239 239 / 90%);
   --primary-color8: rgb(240 239 239 / 80%);
   --text-color: #d1cece;
+  --secondary-color: #5b89ff;
+  --accent-color8: rgb(246 68 68 / 80%);
 }
 
 /* @media (prefers-color-scheme: dark) {
