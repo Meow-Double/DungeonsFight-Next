@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 
-import { Footer, Header } from "@/src/components";
-
 import "../styles/index.css";
 
 export const metadata: Metadata = {
@@ -17,11 +15,7 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en">
-      <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-      </body>
+      <body>{children}</body>
     </html>
   );
 };

@@ -1,6 +1,6 @@
 import { Container, Logo } from "@/src/ui/components";
 
-import styles from "./page.module.css";
+import styles from "./NotFound.module.css";
 
 export const NotFoundPage = () => {
   return (

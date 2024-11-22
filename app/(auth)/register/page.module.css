@@ -1,0 +1,26 @@
+.inner {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  width: 100%;
+  max-width: 480px;
+  transform: translateY(-50%);
+}
+
+
+.login_link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 4px;
+  gap: 8px;
+}
+
+.arrow {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
+}
+
+.login_link:hover .arrow {
+  transform: rotate(180deg) translateX(-4px);
+}

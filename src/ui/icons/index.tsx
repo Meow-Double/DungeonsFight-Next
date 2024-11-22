@@ -1,6 +1,7 @@
 export * from "./ArrowSvg";
 export * from "./AwardSvg";
 export * from "./BagSvg";
+export * from "./CloseSvg";
 export * from "./DescSvg";
 export * from "./EnergySvg";
 export * from "./MoneySvg";

@@ -1,8 +1,10 @@
 export const ROUTES = {
-  MAIN: "/",
+  MAIN: "/main",
   DUNGEON: "/dungeon",
   SETTINGS: "/settings",
   SHOP: "/shop",
+  REGISTER: "/register",
+  LOGIN: "/login",
 };
 
 type RouteType = (typeof ROUTES)[keyof typeof ROUTES];
