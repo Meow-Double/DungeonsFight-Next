@@ -1,0 +1,33 @@
+.item {
+  position: relative;
+  display: flex;
+  width: 120px;
+  height: 120px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--primary-color2);
+  border-radius: 4px;
+  background-color: var(--section-color);
+  cursor: pointer;
+}
+
+.info {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.text {
+  font-weight: 600;
+}
+
+.image {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+}

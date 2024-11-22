@@ -1,13 +1,5 @@
-.bag {
-  margin-bottom: 60px;
-}
-
 .title {
-  display: flex;
-  align-items: center;
-  margin-top: 60px;
   margin-bottom: 20px;
-  gap: 12px;
 }
 
 .items {

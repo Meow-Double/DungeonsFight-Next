@@ -1,5 +1,8 @@
-import { Button, Container, Logo } from "@/src/ui/components";
-import { ShopSvg } from "@/src/ui/icons";
+import Link from "next/link";
+
+import { Container, Logo } from "@/src/ui/components";
+import { EnergySvg, MoneySvg, ShopSvg } from "@/src/ui/icons";
+import { ROUTES } from "@/src/utils";
 
 import { ProfileBadge } from "./components";
 
@@ -12,12 +15,21 @@ export const Header = () => {
         <div className={styles.inner}>
           <div className={styles.right_section}>
             <Logo />
-            <Button variant="section" startIcon={<ShopSvg />}>
-              Shop
-            </Button>
+            <Link href={ROUTES.SHOP} className={styles.shop_link}>
+              <ShopSvg />
+              <span>Shop</span>
+            </Link>
           </div>
-          <nav>
+          <nav className={styles.nav}>
             {/* <Button variant="default">Вход</Button> */}
+            <div className={styles.row}>
+              <span>140</span>
+              <MoneySvg className={styles.money_icon} />
+            </div>
+            <div className={styles.row}>
+              <span>+10</span>
+              <EnergySvg className={styles.energy_icon} />
+            </div>
             <ProfileBadge />
           </nav>
         </div>

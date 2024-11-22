@@ -4,13 +4,8 @@ import clsx from "clsx";
 import styles from "./RareBadge.module.css";
 
 type RareBadgeVariant = "default" | "rounded";
-type AdwardRare =
-  | "ordinary"
-  | "rare"
-  | "average"
-  | "epic"
-  | "legendary"
-  | "common";
+type AdwardRare = string;
+
 interface RareBadgeProps {
   type?: AdwardRare;
   className?: string;

@@ -20,11 +20,15 @@ export const ProfileInfo = () => {
       </Link>
       <img
         className={styles.baner}
-        src="/dungeons/background1.png"
+        src="https://cdn.theanimegallery.com/theanimegallery/fe15732b-0b8d-43d5-a5d3-4bef1e6634c1-dark-aesthetic-anime-wallpaper.webp"
         alt="baner"
       />
       <div className={styles.info}>
-        <img className={styles.avatarka} src="/dungeons/image.png" alt="" />
+        <img
+          className={styles.avatarka}
+          src="https://stockimg.ai/_next/image?url=https%3A%2F%2Fmedia.stockimg.ai%2Fimage%2F_-kcPkY65ZFQ.png&w=1920&q=75"
+          alt="avatarka"
+        />
         <div>
           <div className={styles.personal_data}>
             <Typography variant="title20_bold">User 1</Typography>

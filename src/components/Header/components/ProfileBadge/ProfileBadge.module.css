@@ -6,6 +6,10 @@
   border-radius: 200px;
   background-color: var(--section-color);
   gap: 8px;
+
+  &:hover {
+    background-color: #2e2e2e;
+  }
 }
 
 .icon {

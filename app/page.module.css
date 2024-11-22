@@ -9,3 +9,20 @@
   gap: 40px;
   grid-template-columns: repeat(4, minmax(280px, 1fr));
 }
+
+/* -------------Not-Found */
+
+.window {
+  display: flex;
+  height: 400px;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}

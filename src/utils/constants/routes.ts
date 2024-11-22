@@ -1,6 +1,8 @@
 export const ROUTES = {
   MAIN: "/",
   DUNGEON: "/dungeon",
+  SETTINGS: "/settings",
+  SHOP: "/shop",
 };
 
 type RouteType = (typeof ROUTES)[keyof typeof ROUTES];
