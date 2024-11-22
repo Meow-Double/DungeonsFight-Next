@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { ArrowSvg } from "@/src/ui/icons/ArrowSvg";
+import { ArrowSvg } from "@/src/ui/icons";
 import { ROUTES } from "@/src/utils";
 import { Dungeons } from "@/src/utils/constants/data";
 
@@ -14,7 +14,7 @@ export const DungeonInfo = () => {
   return (
     <div className={styles.header}>
       <div>
-        <Link className={styles.link} href={ROUTES.MAIN}>
+        <Link className={styles.back} href={ROUTES.MAIN}>
           <ArrowSvg className={styles.arrow} />
           <span>Главная</span>
         </Link>

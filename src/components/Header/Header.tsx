@@ -1,5 +1,5 @@
 import { Button, Container, Logo } from "@/src/ui/components";
-import { ShopSvg } from "@/src/ui/icons/ShopSvg";
+import { ShopSvg } from "@/src/ui/icons";
 
 import { ProfileBadge } from "./components";
 

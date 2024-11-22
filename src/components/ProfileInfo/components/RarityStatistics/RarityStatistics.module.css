@@ -1,0 +1,16 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 40px;
+  gap: 8px;
+}
+
+.icon {
+  width: 12px;
+  height: 13px;
+}
+
+.icon path {
+  fill: #fff;
+}

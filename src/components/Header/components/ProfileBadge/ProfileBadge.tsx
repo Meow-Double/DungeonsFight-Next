@@ -8,7 +8,7 @@ import styles from "./ProfileBadge.module.css";
 
 export const ProfileBadge = () => {
   return (
-    <Link href="/" className={styles.inner}>
+    <Link href="/profile/1" className={styles.inner}>
       <img
         className={styles.icon}
         src="https://cdn-icons-png.flaticon.com/512/3607/3607444.png"

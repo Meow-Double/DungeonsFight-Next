@@ -20,7 +20,7 @@ export const AdwardCard = ({
     <div className={styles.card}>
       <div className={styles.image_block}>
         {/* <span className={styles.rare} /> */}
-        <RareBadge type="average" className={styles.rare} />
+        <RareBadge variant="rounded" type="average" className={styles.rare} />
         <img className={styles.image} src={icon} alt="" />
       </div>
       <div className={styles.content}>

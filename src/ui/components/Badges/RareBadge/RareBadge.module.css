@@ -1,10 +1,14 @@
 .badge {
   display: inline-block;
-  width: 24px;
-  height: 24px;
-  border: 1px solid var(--primary-color);
-  border-radius: 200px;
 }
+
+.icon {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Types */
 
 .ordinary {
   background-color: #a78a84;
@@ -24,4 +28,22 @@
 
 .legendary {
   background-color: #ff4848;
+}
+
+.common {
+  background-color: var(--section-color);
+}
+
+/* Variants */
+
+.default {
+  padding: 2px 12px;
+  border-radius: 4px;
+}
+
+.rounded {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--primary-color);
+  border-radius: 200px;
 }

@@ -21,7 +21,9 @@ export const DescriptionBlock = ({ desc }: DescriptionBlockProps) => {
         <Typography variant="title20_bold" className={styles.title}>
           Описание:
         </Typography>
-        <p ref={textRef}>{desc}</p>
+        <p className={styles.text} ref={textRef}>
+          {desc}
+        </p>
       </div>
     </>
   );

@@ -4,5 +4,5 @@
 }
 
 .text16_regular {
-  color: vad(--text-color);
+  color: var(--text-color);
 }
