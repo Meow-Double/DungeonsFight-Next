@@ -1,9 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Container, Typography } from "@/src/ui/components";
 import { ROUTES } from "@/src/utils";
 
 import styles from "./layout.module.css";
+
+export const metadata: Metadata = {
+  title: "Dungeons Fight | Авторизация",
+};
 
 const AuthLayout = ({
   children,

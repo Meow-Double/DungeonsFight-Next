@@ -12,7 +12,13 @@
     "stylelint": "stylelint \"**/*.css\"",
     "pretty": "npm run format && npm run lint --fix && npm run stylelint --fix",
     "prepare": "husky",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "prisma:push": "prisma db push",
+    "prisma:studio": "prisma studio",
+    "prisma:seed": "prisma db seed"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "lint-staged": {
     "*.css": [
@@ -27,12 +33,21 @@
     ]
   },
   "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "@trpc/server": "^10.45.2",
+    "@types/bcrypt": "^5.0.2",
+    "axios": "^1.7.7",
+    "bcrypt": "^5.1.1",
     "clsx": "^2.1.1",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.9",
     "next": "15.0.3",
+    "next-auth": "^4.24.10",
+    "prisma": "^5.22.0",
     "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106"
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "ts-node": "^10.9.2",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20",

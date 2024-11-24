@@ -29,3 +29,7 @@
   align-items: center;
   gap: 8px;
 }
+
+.icon path {
+  fill: var(--primary-color8);
+}

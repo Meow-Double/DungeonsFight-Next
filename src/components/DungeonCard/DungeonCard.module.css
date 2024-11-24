@@ -53,3 +53,7 @@
 .info_title {
   color: var(--accent-color);
 }
+
+.icon path{
+  fill: var(--accent-color)
+}

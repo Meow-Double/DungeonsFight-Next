@@ -4,44 +4,44 @@ import { AwardSvg, EnergySvg } from "@/src/ui/icons";
 import styles from "./InfoBlock.module.css";
 
 interface InfoBlockProps {
-  time: string;
-  adward: number;
-  energy: number;
-  title: string;
-  type: string;
+  openTime?: string;
+  adwardValue?: number;
+  difficulty?: number;
+  title?: string;
+  type?: string;
 }
 
 export const InfoBlock = ({
-  time,
-  adward,
-  energy,
+  openTime,
+  adwardValue,
+  difficulty,
   title,
   type,
 }: InfoBlockProps) => {
   return (
     <div className={styles.content}>
       <ul className={styles.info}>
-        <li className={styles.item}>
+        {/* <li className={styles.item}>
           <span>Ценность наград: </span>
           <div className={styles.value}>
             <span>70%</span> <AwardSvg />
           </div>
-        </li>
+        </li> */}
         <li className={styles.item}>
           <span>Сложность: </span>
           <div className={styles.value}>
-            <span>{energy}</span> <EnergySvg />
+            <span>{difficulty}</span> <EnergySvg className={styles.icon} />
           </div>
         </li>
         <li className={styles.item}>
           <span>Ценность наград: </span>
           <div className={styles.value}>
-            <span>{adward}%</span>
-            <AwardSvg />
+            <span>{adwardValue}</span>
+            <AwardSvg className={styles.icon} />
           </div>
         </li>
       </ul>
-      <Badge variant="dungeon" text={time} />
+      <Badge variant="dungeon" text={openTime ?? "отсуствует"} />
       <div>
         <Typography className={styles.title} variant="title20_bold">
           {title}

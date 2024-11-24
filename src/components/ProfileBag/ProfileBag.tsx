@@ -5,20 +5,26 @@ import { ItemCard } from "../ItemCard/ItemCard";
 
 import styles from "./ProfileBag.module.css";
 
-const Data = [1, 2, 3, 4, 5, 6];
+interface ProfileBagProps {
+  bag: BagItems;
+}
 
-export const ProfileBag = () => {
+export const ProfileBag = ({ bag }: ProfileBagProps) => {
   return (
     <div className={styles.bag}>
       <div className={styles.title}>
         <BagSvg />
-        <Typography variant="title20_bold">Ваш рюкзак:</Typography>
+        <Typography variant="title20_bold">
+          Ваш рюкзак: {!Boolean(bag.length) && "Пустой"}
+        </Typography>
       </div>
-      <ul className={styles.items}>
-        {Data.map((id) => (
-          <ItemCard key={id} />
-        ))}
-      </ul>
+      {Boolean(bag.length) && (
+        <ul className={styles.items}>
+          {bag.map((bagItem) => (
+            <ItemCard key={bagItem.id} {...bagItem} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

@@ -1,0 +1,78 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("POSTGRES_URL")
+    // directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  username  String   @unique
+  avatarUrl String
+  baner     String
+
+  bag      BagItem[]
+
+  @@unique([username, email])
+}
+
+
+model BagItem {
+  id        Int      @id @default(autoincrement())
+  quantity  Int
+  thing     Thing   @relation(fields: [thingId], references: [id])
+  thingId   Int
+
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int      
+}
+
+
+
+model Thing {
+  id       Int      @id @default(autoincrement())
+  image    String
+  title    String
+  desc     String
+  type     String
+  payment  Int 
+
+  bagItems BagItem[] 
+  dungeonAdwards DungeonAdward[]
+}
+
+// Dungeons
+
+
+model Dungeon {
+    id       Int      @id @default(autoincrement())
+    preview String
+    baner String
+    difficulty Int
+    title String
+    type String
+    opnetTime String
+    desc String
+
+    dungeonAdwards DungeonAdward[]
+
+}
+
+
+
+model DungeonAdward {
+    id            Int          @id @default(autoincrement())
+    chance        Int
+
+    dungeon      Dungeon     @relation(fields: [dungeonId], references: [id])
+    dungeonId    Int  
+
+    thing         Thing       @relation(fields: [thingId], references: [id])
+    thingId       Int
+}

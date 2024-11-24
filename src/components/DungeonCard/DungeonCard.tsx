@@ -6,39 +6,36 @@ import { pathWithSlug, ROUTES } from "@/src/utils";
 
 import styles from "./DungeonCard.module.css";
 
-interface DungeonCardProps {
-  title: string;
-  type: string;
-  background: string;
-  energy: number;
-  adward: number;
-  id: number;
-}
+type DungeonCardProps = Partial<Omit<DungeonTypes, "dungeonAdwards">> & {
+  dungeonAdwards: Array<{
+    id: number;
+  }>;
+};
 
 export const DungeonCard = ({
   title,
   type,
-  background,
-  energy,
-  adward,
+  preview,
+  difficulty,
   id,
+  dungeonAdwards,
 }: DungeonCardProps) => {
   return (
     <Link href={pathWithSlug({ router: ROUTES.DUNGEON, slug: id })}>
       <div className={styles.card}>
-        <img className={styles.background} src={background} alt="background" />
+        <img className={styles.background} src={preview} alt="preview" />
         <div className={styles.content}>
           <ul className={styles.info}>
             <li className={styles.info_item}>
-              <EnergySvg />
+              <EnergySvg className={styles.icon} />
               <Typography variant="title20_bold" className={styles.info_title}>
-                {energy}
+                {difficulty}
               </Typography>
             </li>
             <li className={styles.info_item}>
-              <AwardSvg />
+              <AwardSvg className={styles.icon} />
               <Typography variant="title20_bold" className={styles.info_title}>
-                {adward}%
+                {dungeonAdwards?.length}
               </Typography>
             </li>
           </ul>

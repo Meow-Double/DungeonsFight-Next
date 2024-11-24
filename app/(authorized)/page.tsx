@@ -1,15 +1,24 @@
+import type { Metadata } from "next";
+
+import { caller } from "@/server/routes";
 import { DungeonCard } from "@/src/components";
 import { Container } from "@/src/ui/components";
-import { Dungeons } from "@/src/utils/constants/data";
 
 import styles from "./page.module.css";
 
-const MainPage = () => {
+export const metadata: Metadata = {
+  title: "Dungeons Fight | Главная",
+  description: "App for fun gaming!",
+  icons: "logo.svg",
+};
+
+const MainPage = async () => {
+  const dungeons = await caller.getDungeons({});
   return (
     <div className={styles.wrapper}>
       <Container>
         <ul className={styles.dungeons_cards}>
-          {Dungeons.map((dungeon) => (
+          {dungeons.map((dungeon) => (
             <DungeonCard key={dungeon.id} {...dungeon} />
           ))}
         </ul>

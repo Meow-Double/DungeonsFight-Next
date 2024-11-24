@@ -1,5 +1,5 @@
 export const ROUTES = {
-  MAIN: "/main",
+  MAIN: "/",
   DUNGEON: "/dungeon",
   SETTINGS: "/settings",
   SHOP: "/shop",

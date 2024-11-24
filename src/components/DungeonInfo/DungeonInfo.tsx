@@ -2,15 +2,21 @@ import Link from "next/link";
 
 import { ArrowSvg } from "@/src/ui/icons";
 import { ROUTES } from "@/src/utils";
-import { Dungeons } from "@/src/utils/constants/data";
 
 import { InfoBlock } from "./components";
 
 import styles from "./Dungeon.module.css";
 
-export const DungeonInfo = () => {
-  const Dungeon = Dungeons[0];
-
+type DungeonInfoProps = Partial<DungeonTypes>;
+export const DungeonInfo = ({
+  baner,
+  preview,
+  openTime,
+  difficulty,
+  title,
+  type,
+  dungeonAdwards,
+}: DungeonInfoProps) => {
   return (
     <div className={styles.header}>
       <div>
@@ -18,15 +24,17 @@ export const DungeonInfo = () => {
           <ArrowSvg className={styles.arrow} />
           <span>Главная</span>
         </Link>
-        <img className={styles.background} src={Dungeon.baner} alt="" />
+        <img className={styles.background} src={baner} alt="" />
       </div>
       <div className={styles.info}>
-        <img
-          className={styles.preview_image}
-          src={Dungeon.background}
-          alt="preview"
+        <img className={styles.preview_image} src={preview} alt="preview" />
+        <InfoBlock
+          openTime={openTime}
+          adwardValue={dungeonAdwards?.length}
+          difficulty={difficulty}
+          title={title}
+          type={type}
         />
-        <InfoBlock {...Dungeon} />
       </div>
     </div>
   );
