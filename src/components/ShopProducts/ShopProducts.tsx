@@ -8,7 +8,7 @@ const Data = [1, 2, 3, 4];
 export const ShopProducts = () => {
   return (
     <div>
-      <Typography variant="text16_regular" className={styles.title}>
+      <Typography tag="h2" variant="text16_regular" className={styles.title}>
         Товар дня:
       </Typography>
       <ul className={styles.items}>

@@ -7,7 +7,7 @@ type TypographyTag = "div" | "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 type TypographyProps<Tag extends TypographyTag> = ComponentPropsWithRef<Tag> & {
   variant: TypographyVariant;
-  tag?: TypographyTag;
+  tag: TypographyTag;
   children: ReactNode;
 };
 

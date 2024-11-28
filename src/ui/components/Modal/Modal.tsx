@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import clsx from "clsx";
 
 import { CloseSvg } from "../../icons";
-import { Typography } from "../Typography/Typography";
 
 import styles from "./Modal.module.css";
 
@@ -27,7 +26,7 @@ export const Modal = ({
       <div className={clsx(styles.overlay, className)} onClick={onClick}>
         <div className={styles.body} onClick={(e) => e.stopPropagation()}>
           <div className={styles.header}>
-            {title && <Typography variant="title20_bold">{title}</Typography>}
+            {title && <h2 className={styles.title}>{title}</h2>}
             <button onClick={onClick}>
               <CloseSvg />
             </button>

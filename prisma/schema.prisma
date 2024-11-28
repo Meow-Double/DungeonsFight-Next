@@ -16,6 +16,9 @@ model User {
   username  String   @unique
   avatarUrl String
   baner     String
+  energy    Int  @default(10)
+  limitEnergy Int @default(10)
+  money Int @default(10)
 
   bag      BagItem[]
 
@@ -57,7 +60,7 @@ model Dungeon {
     difficulty Int
     title String
     type String
-    opnetTime String
+    openTime String
     desc String
 
     dungeonAdwards DungeonAdward[]

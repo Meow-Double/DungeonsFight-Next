@@ -1,6 +1,7 @@
 "use client"; // Error boundaries must be Client Components
 
 import { useEffect } from "react";
+import { notFound } from "next/navigation";
 
 import { Container } from "@/src/ui/components";
 
@@ -13,11 +14,11 @@ const Error = ({
   useEffect(() => {
     console.error(error);
   }, [error]);
-
+  notFound();
   return (
     <Container>
       <div>
-        <h2>Профиль не существует</h2>
+        <h2>{error.message}</h2>
       </div>
     </Container>
   );

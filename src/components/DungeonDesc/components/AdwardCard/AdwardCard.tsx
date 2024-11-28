@@ -4,11 +4,11 @@ import { MoneySvg } from "@/src/ui/icons";
 import styles from "./AdwardCard.module.css";
 
 interface AdwardCardProps {
-  title: string;
-  chance: number;
-  payment: number;
-  image: string;
-  type: string;
+  title?: string;
+  chance?: number;
+  payment?: number;
+  image?: string;
+  type?: string;
 }
 
 export const AdwardCard = ({
@@ -26,14 +26,14 @@ export const AdwardCard = ({
       </div>
       <div className={styles.content}>
         <div>
-          <Typography variant="title20_bold" className={styles.title}>
+          <Typography tag="h3" variant="title20_bold" className={styles.title}>
             {title}
           </Typography>
-          <Typography variant="text16_regular">
+          <Typography tag="p" variant="text16_regular">
             Шанс выпадения: {chance}%
           </Typography>
         </div>
-        <Typography variant="text16_regular">
+        <Typography tag="p" variant="text16_regular">
           Стоимость: {payment} <MoneySvg className={styles.icon} />
         </Typography>
       </div>

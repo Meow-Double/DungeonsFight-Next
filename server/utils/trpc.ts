@@ -1,2 +1,4 @@
 import { initTRPC } from "@trpc/server";
-export const trpc = initTRPC.create();
+
+import type { Context } from "../context";
+export const trpc = initTRPC.context<Context>().create();

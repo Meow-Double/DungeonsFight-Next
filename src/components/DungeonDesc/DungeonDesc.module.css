@@ -16,8 +16,8 @@
 }
 
 .adwards {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   align-items: center;
   gap: 30px;
+  grid-template-columns: repeat(3, minmax(320px, 340px));
 }

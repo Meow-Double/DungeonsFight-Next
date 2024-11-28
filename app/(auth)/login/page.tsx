@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { LoginForm } from "@/src/components";
+import { LoginForm } from "@/src/components/Auth";
 import { ArrowSvg } from "@/src/ui/icons";
-import { ROUTES } from "@/src/utils";
+import { ROUTES } from "@/src/utils/constants";
 
 import styles from "./page.module.css";
 

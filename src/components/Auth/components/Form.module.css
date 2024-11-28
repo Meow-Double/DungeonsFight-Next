@@ -1,0 +1,20 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid var(--primary-color2);
+  border-radius: 4px;
+  background-color: var(--section-color);
+  gap: 30px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.policy_condition {
+  font-size: 14px;
+  text-decoration: underline;
+}

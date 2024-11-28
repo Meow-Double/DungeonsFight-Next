@@ -1,4 +1,65 @@
-type DungeonType = "dungeon" | "cave" | "arena" | "lair" | "terrain";
+interface UserTypes {
+  id: number;
+  email: string;
+  password: string;
+  username: string;
+  avatarUrl: string;
+  baner: string;
+  energy: number;
+  limitEnergy: number;
+  money: number;
+  bag: BagItemTypes[];
+}
+
+interface ThingTypes {
+  id: number;
+  image: string;
+  title: string;
+  desc: string;
+  type: string;
+  payment: number;
+}
+
+interface DungeonTypes {
+  preview: string;
+  baner: string;
+  difficulty: number;
+  title: string;
+  type: string;
+  openTime: string;
+  desc: string;
+  id: number;
+  dungeonAdwards: DungeonAdwardTypes[];
+}
+
+interface DungeonAdwardTypes {
+  payment?: number;
+  image?: string;
+  type?: string;
+  title?: string;
+  id: number;
+  thingId: number;
+  chance: number;
+  dungeonId: number;
+}
+
+interface BagItemTypes {
+  id: number;
+  quantity: number;
+  image: string;
+  title: string;
+  desc: string;
+  type: string;
+  payment: number;
+}
+
+type Users = UserTypes[];
+type Things = ThingTypes[];
+type Dungeons = DungeonTypes[];
+type DungeonAdwards = DungeonAdwardTypes[];
+type BagItems = BagItemTypes[];
+
+type DungeonTypeTypes = "dungeon" | "cave" | "arena" | "lair" | "terrain";
 type RareTypes =
   | "ordinary"
   | "rare"
@@ -11,45 +72,3 @@ type RareStatistics = Array<{
   rare: RareTypes;
   quantity: number;
 }>;
-
-interface BagItem {
-  id: number;
-  image: string;
-  title: string;
-  desc: string;
-  type: string;
-  payment: number;
-  quantity: number;
-}
-
-type BagItems = BagItem[];
-
-interface DungeonTypes {
-  preview: string;
-  baner: string;
-  difficulty: number;
-  title: string;
-  type: string;
-  openTime: string;
-  desc: string;
-  id: number;
-  dungeonAdwards: DungeonAdwardThing[];
-}
-
-interface DungeonAdwardThing {
-  id: number;
-  chance: number;
-  image: string;
-  title: string;
-  type: string;
-  payment: number;
-}
-
-interface Thing {
-  id: number;
-  image: string;
-  title: string;
-  desc: string;
-  type: string;
-  payment: number;
-}

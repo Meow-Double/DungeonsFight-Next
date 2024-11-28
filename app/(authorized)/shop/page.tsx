@@ -1,7 +1,15 @@
-import { SalesMenu, ShopBage, ShopBaner, ShopProducts } from "@/src/components";
+import type { Metadata } from "next";
+
+import { SalesMenu, ShopBage, ShopBaner } from "@/src/components";
 import { Container } from "@/src/ui/components";
 
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "Dungeons Fight | Магазин",
+  description: "Магазин, содержащий редкие товары",
+  icons: "logo.svg",
+};
 
 const ShopPage = () => {
   return (
@@ -11,7 +19,7 @@ const ShopPage = () => {
         <div className={styles.shop}>
           <ShopBage />
           <SalesMenu />
-          <ShopProducts />
+          {/* <ShopProducts /> */}
         </div>
       </div>
     </Container>

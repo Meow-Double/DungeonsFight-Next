@@ -1,21 +1,29 @@
 import Link from "next/link";
 
 import { Typography } from "@/src/ui/components";
+import { pathWithSlug, ROUTES } from "@/src/utils/constants";
 
 import styles from "./ProfileBadge.module.css";
 
-// interface ProfileBadgeProps {}
+interface ProfileBadgeProps {
+  id: number;
+  avatarUrl: string;
+  username: string;
+}
 
-export const ProfileBadge = () => {
+export const ProfileBadge = ({
+  id,
+  avatarUrl,
+  username,
+}: ProfileBadgeProps) => {
   return (
-    <Link href="/profile/1" className={styles.inner}>
-      <img
-        className={styles.icon}
-        src="https://stockimg.ai/_next/image?url=https%3A%2F%2Fmedia.stockimg.ai%2Fimage%2F_-kcPkY65ZFQ.png&w=1920&q=75"
-        alt="avatarka"
-      />
-      <Typography variant="text16_regular" className={styles.name}>
-        Slava
+    <Link
+      href={pathWithSlug({ router: ROUTES.PROFILE, slug: id })}
+      className={styles.inner}
+    >
+      <img className={styles.icon} src={avatarUrl} alt="avatarka" />
+      <Typography tag="p" variant="text16_regular" className={styles.name}>
+        {username}
       </Typography>
     </Link>
   );

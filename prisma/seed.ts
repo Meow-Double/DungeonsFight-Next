@@ -43,6 +43,16 @@ async function generateData() {
         thingId: 2,
         userId: 1,
       },
+      {
+        quantity: 3,
+        thingId: 8,
+        userId: 1,
+      },
+      {
+        quantity: 7,
+        thingId: 19,
+        userId: 1,
+      },
     ],
   });
 

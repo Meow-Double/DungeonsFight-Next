@@ -73,6 +73,111 @@ export const DungeonAdwards = [
     chance: 25,
     thingId: 14,
   },
+  //    wisdom_tree
+  {
+    dungeonId: 5,
+    chance: 65,
+    thingId: 15,
+  },
+  {
+    dungeonId: 5,
+    chance: 55,
+    thingId: 16,
+  },
+  {
+    dungeonId: 5,
+    chance: 40,
+    thingId: 17,
+  },
+  {
+    dungeonId: 5,
+    chance: 10,
+    thingId: 18,
+  },
+  {
+    dungeonId: 5,
+    chance: 3,
+    thingId: 19,
+  },
+  {
+    dungeonId: 5,
+    chance: 8,
+    thingId: 20,
+  },
+  //    garden_eden
+  {
+    dungeonId: 6,
+    chance: 30,
+    thingId: 21,
+  },
+  {
+    dungeonId: 6,
+    chance: 5,
+    thingId: 22,
+  },
+  {
+    dungeonId: 6,
+    chance: 10,
+    thingId: 23,
+  },
+  //drowning_basement
+  {
+    dungeonId: 7,
+    chance: 90,
+    thingId: 24,
+  },
+  {
+    dungeonId: 7,
+    chance: 60,
+    thingId: 25,
+  },
+  {
+    dungeonId: 7,
+    chance: 20,
+    thingId: 26,
+  },
+  //kraken_grounds
+  {
+    dungeonId: 8,
+    chance: 90,
+    thingId: 27,
+  },
+  {
+    dungeonId: 8,
+    chance: 65,
+    thingId: 28,
+  },
+  {
+    dungeonId: 8,
+    chance: 55,
+    thingId: 29,
+  },
+  {
+    dungeonId: 8,
+    chance: 2,
+    thingId: 30,
+  },
+  // house_worship
+  {
+    dungeonId: 9,
+    chance: 75,
+    thingId: 31,
+  },
+  {
+    dungeonId: 9,
+    chance: 30,
+    thingId: 32,
+  },
+  {
+    dungeonId: 9,
+    chance: 7,
+    thingId: 33,
+  },
+  {
+    dungeonId: 9,
+    chance: 8,
+    thingId: 34,
+  },
 ];
 
 // "ordinary" | "rare" | "average" | "epic" | "legendary";

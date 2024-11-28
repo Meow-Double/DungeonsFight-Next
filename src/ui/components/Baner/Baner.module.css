@@ -1,0 +1,27 @@
+.baner {
+  position: relative;
+  overflow: hidden;
+}
+
+.background {
+  width: 100%;
+  object-fit: cover;
+}
+
+.back {
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.arrow {
+  transition: transform 0.2s ease;
+}
+
+.back:hover .arrow {
+  transform: translateX(-4px);
+}

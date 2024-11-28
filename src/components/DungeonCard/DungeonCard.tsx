@@ -2,15 +2,14 @@ import Link from "next/link";
 
 import { Typography } from "@/src/ui/components";
 import { AwardSvg, EnergySvg } from "@/src/ui/icons";
-import { pathWithSlug, ROUTES } from "@/src/utils";
+import { pathWithSlug, ROUTES } from "@/src/utils/constants";
 
 import styles from "./DungeonCard.module.css";
 
-type DungeonCardProps = Partial<Omit<DungeonTypes, "dungeonAdwards">> & {
-  dungeonAdwards: Array<{
-    id: number;
-  }>;
-};
+interface DungeonCardProps
+  extends Partial<Omit<DungeonTypes, "dungeonAdwards">> {
+  adwardsLength: number;
+}
 
 export const DungeonCard = ({
   title,
@@ -18,7 +17,7 @@ export const DungeonCard = ({
   preview,
   difficulty,
   id,
-  dungeonAdwards,
+  adwardsLength,
 }: DungeonCardProps) => {
   return (
     <Link href={pathWithSlug({ router: ROUTES.DUNGEON, slug: id })}>
@@ -28,22 +27,38 @@ export const DungeonCard = ({
           <ul className={styles.info}>
             <li className={styles.info_item}>
               <EnergySvg className={styles.icon} />
-              <Typography variant="title20_bold" className={styles.info_title}>
+              <Typography
+                tag="div"
+                variant="title20_bold"
+                className={styles.info_title}
+              >
                 {difficulty}
               </Typography>
             </li>
             <li className={styles.info_item}>
               <AwardSvg className={styles.icon} />
-              <Typography variant="title20_bold" className={styles.info_title}>
-                {dungeonAdwards?.length}
+              <Typography
+                tag="div"
+                variant="title20_bold"
+                className={styles.info_title}
+              >
+                {adwardsLength}
               </Typography>
             </li>
           </ul>
           <div>
-            <Typography variant="title20_bold" className={styles.title}>
+            <Typography
+              tag="h2"
+              variant="title20_bold"
+              className={styles.title}
+            >
               {title}
             </Typography>
-            <Typography variant="text16_regular" className={styles.type}>
+            <Typography
+              tag="h4"
+              variant="text16_regular"
+              className={styles.type}
+            >
               {type}
             </Typography>
           </div>

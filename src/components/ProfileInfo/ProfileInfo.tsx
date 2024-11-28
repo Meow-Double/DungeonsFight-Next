@@ -1,8 +1,7 @@
-import Link from "next/link";
+"use client";
 
-import { Typography } from "@/src/ui/components";
-import { ArrowSvg, SettingsSvg } from "@/src/ui/icons";
-import { ROUTES } from "@/src/utils";
+import { useAuth } from "@/src/store";
+import { Baner, Typography } from "@/src/ui/components";
 
 import { RarityStatistics } from "./components";
 
@@ -14,6 +13,7 @@ interface ProfileInfoProps {
   avatarUrl: string | undefined;
   baner: string;
   types: RareStatistics;
+  id: number;
 }
 
 export const ProfileInfo = ({
@@ -22,29 +22,34 @@ export const ProfileInfo = ({
   avatarUrl,
   baner,
   types,
+  id,
 }: ProfileInfoProps) => {
+  const user = useAuth((state) => state.user);
   return (
-    <div className={styles.info_block}>
-      <Link className={styles.back} href={ROUTES.MAIN}>
-        <ArrowSvg className={styles.arrow} />
-        <span>Главная</span>
-      </Link>
-      <Link href="/profile/1/settings" className={styles.settings}>
-        <SettingsSvg />
-      </Link>
-      <img className={styles.baner} src={baner} alt="baner" />
+    <Baner
+      banerImage={baner}
+      classNameImg={styles.image}
+      className={styles.baner}
+    >
+      <div className={styles.badge}>admin</div>
       <div className={styles.info}>
         <img className={styles.avatarka} src={avatarUrl} alt="avatarka" />
         <div>
           <div className={styles.personal_data}>
-            <Typography variant="title20_bold">{username}</Typography>
-            <Typography variant="text16_regular">{email}</Typography>
+            <Typography tag="h2" variant="title20_bold">
+              {username}
+            </Typography>
+            {user?.id === id && (
+              <Typography tag="h4" variant="text16_regular">
+                {email}
+              </Typography>
+            )}
           </div>
           <div>
             <RarityStatistics types={types} />
           </div>
         </div>
       </div>
-    </div>
+    </Baner>
   );
 };

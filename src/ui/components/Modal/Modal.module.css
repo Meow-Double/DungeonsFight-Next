@@ -1,5 +1,6 @@
 .overlay {
   position: fixed;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,10 +16,15 @@
   background-color: var(--section-color);
 }
 
-.header{
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    gap: 20px;
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
 }

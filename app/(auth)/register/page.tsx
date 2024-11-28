@@ -3,14 +3,15 @@
 import { useState } from "react";
 import Link from "next/link";
 
-import { PolicyConditionModal, RegisterForm } from "@/src/components";
+import { PolicyConditionModal, RegisterForm } from "@/src/components/Auth";
 import { ArrowSvg } from "@/src/ui/icons";
-import { ROUTES } from "@/src/utils";
+import { ROUTES } from "@/src/utils/constants";
 
 import styles from "./page.module.css";
 
 const RegisterPage = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <div className={styles.inner}>

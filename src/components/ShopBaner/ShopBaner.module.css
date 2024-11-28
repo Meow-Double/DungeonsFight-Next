@@ -1,14 +1,11 @@
 .baner {
-  position: relative;
-  overflow: hidden;
   height: 120px;
+  margin-bottom: 30px;
 }
 
-.background {
-  width: 100%;
-  height: 100px;
+.image {
+  height: 100%;
   filter: brightness(20%);
-  object-fit: cover;
 }
 
 .title {
@@ -17,22 +14,4 @@
   left: 50%;
   text-transform: uppercase;
   transform: translate(-50%, -50%);
-}
-
-.back {
-  position: absolute;
-  z-index: 1;
-  top: 20px;
-  left: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.arrow {
-  transition: transform 0.2s ease;
-}
-
-.back:hover .arrow {
-  transform: translateX(-4px);
 }

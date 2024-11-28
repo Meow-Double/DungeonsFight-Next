@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
-import { ROUTES } from "@/src/utils";
+import { ROUTES } from "@/src/utils/constants";
 
 import styles from "./Logo.module.css";
 

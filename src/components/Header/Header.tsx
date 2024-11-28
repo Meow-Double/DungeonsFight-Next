@@ -1,39 +1,77 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import { Container, Logo } from "@/src/ui/components";
-import { EnergySvg, MoneySvg, ShopSvg } from "@/src/ui/icons";
-import { ROUTES } from "@/src/utils";
+import { useAuth } from "@/src/store";
+import { Button, Container, Logo } from "@/src/ui/components";
+import { EnergySvg, MenuSvg, MoneySvg, ShopSvg } from "@/src/ui/icons";
+import { ROUTES } from "@/src/utils/constants";
 
-import { ProfileBadge } from "./components";
+import { DrawerMenu, ProfileBadge } from "./components";
 
 import styles from "./Header.module.css";
 
 export const Header = () => {
+  const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+  const user = useAuth((state) => state.user);
+  console.log(user);
+  const router = useRouter();
+
+  const onLogin = () => {
+    router.push(ROUTES.LOGIN);
+  };
   return (
-    <header className={styles.header}>
-      <Container>
-        <div className={styles.inner}>
-          <div className={styles.right_section}>
-            <Logo />
-            <Link href={ROUTES.SHOP} className={styles.shop_link}>
-              <ShopSvg />
-              <span>Shop</span>
-            </Link>
+    <>
+      <header className={styles.header}>
+        <Container>
+          <div className={styles.inner}>
+            <div className={styles.right_section}>
+              <button
+                onClick={() => setIsOpenDrawer(true)}
+                className={styles.burger_btn}
+              >
+                <MenuSvg className={styles.menu_icon} />
+              </button>
+              <Logo />
+              <Link href={ROUTES.SHOP} className={styles.shop_link}>
+                <ShopSvg />
+                <span>Магазин</span>
+              </Link>
+            </div>
+            <nav className={styles.nav}>
+              {user ? (
+                <>
+                  <div className={styles.row}>
+                    <span>{user.money}</span>
+                    <MoneySvg className={styles.money_icon} />
+                  </div>
+                  <div className={styles.row}>
+                    <span>
+                      {user.energy}/{user.limitEnergy}
+                    </span>
+                    <EnergySvg className={styles.energy_icon} />
+                  </div>
+                  <ProfileBadge
+                    id={Number(user?.id)}
+                    avatarUrl={user?.avatarUrl ?? ""}
+                    username={user?.username ?? ""}
+                  />
+                </>
+              ) : (
+                <Button variant="default" onClick={onLogin}>
+                  Вход
+                </Button>
+              )}
+            </nav>
           </div>
-          <nav className={styles.nav}>
-            {/* <Button variant="default">Вход</Button> */}
-            <div className={styles.row}>
-              <span>140</span>
-              <MoneySvg className={styles.money_icon} />
-            </div>
-            <div className={styles.row}>
-              <span>+10</span>
-              <EnergySvg className={styles.energy_icon} />
-            </div>
-            <ProfileBadge />
-          </nav>
-        </div>
-      </Container>
-    </header>
+        </Container>
+      </header>
+      <DrawerMenu
+        closeDrawer={() => setIsOpenDrawer(false)}
+        isOpenDrawer={isOpenDrawer}
+      />
+    </>
   );
 };

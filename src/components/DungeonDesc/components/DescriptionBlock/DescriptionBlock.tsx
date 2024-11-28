@@ -18,7 +18,7 @@ export const DescriptionBlock = ({ desc }: DescriptionBlockProps) => {
     <>
       <IconCopy className={styles.icon} icon={<DescSvg />} textRef={textRef} />
       <div>
-        <Typography variant="title20_bold" className={styles.title}>
+        <Typography tag="h2" variant="title20_bold" className={styles.title}>
           Описание:
         </Typography>
         <p className={styles.text} ref={textRef}>

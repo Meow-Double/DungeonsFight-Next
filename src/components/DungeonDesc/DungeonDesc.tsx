@@ -5,7 +5,10 @@ import { AdwardCard, DescriptionBlock } from "./components";
 
 import styles from "./DungeonDesc.module.css";
 
-type DungeonDescProps = Partial<DungeonTypes>;
+interface DungeonDescProps {
+  desc: string;
+  dungeonAdwards: DungeonAdwards;
+}
 
 export const DungeonDesc = ({ desc, dungeonAdwards }: DungeonDescProps) => {
   return (
@@ -13,7 +16,7 @@ export const DungeonDesc = ({ desc, dungeonAdwards }: DungeonDescProps) => {
       <DescriptionBlock desc={desc ?? "описание отсуствует"} />
       <AwardSvg />
       <div>
-        <Typography variant="title20_bold" className={styles.title}>
+        <Typography tag="h2" variant="title20_bold" className={styles.title}>
           Виды наград:
           {!Boolean(dungeonAdwards?.length) && "награда отсуствует"}
         </Typography>

@@ -67,7 +67,6 @@ export const dungeonsRouter = trpc.router({
         return newDungeon;
       } catch (error) {
         console.error("Ошибка при получении подземелья:", error);
-        throw new Error("Произошла ошибка при получении подземелья");
       }
     }),
 });

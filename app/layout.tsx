@@ -1,3 +1,6 @@
+import { AuthProvider } from "@/src/providers";
+import { TRPCProvider } from "@/src/utils/hooks";
+
 import "../styles/index.css";
 
 const RootLayout = ({
@@ -7,7 +10,11 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <TRPCProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </TRPCProvider>
+      </body>
     </html>
   );
 };

@@ -25,8 +25,7 @@ export const usersRouter = trpc.router({
 
         return user;
       } catch (error) {
-        console.error("Ошибка при поиске пользователя:", error);
-        throw new Error("Произошла ошибка при поиске профиля");
+        throw error;
       }
     }),
 

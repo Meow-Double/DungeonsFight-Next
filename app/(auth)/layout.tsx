@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Container, Typography } from "@/src/ui/components";
-import { ROUTES } from "@/src/utils";
+import { ROUTES } from "@/src/utils/constants";
+import { getCurrentYear } from "@/src/utils/helpers";
 
 import styles from "./layout.module.css";
 
@@ -15,6 +16,8 @@ const AuthLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  const currentYear = getCurrentYear();
+
   return (
     <div className={styles.window}>
       <Container>
@@ -29,7 +32,11 @@ const AuthLayout = ({
               <span>Dungeons</span>
               <span className={styles.accent_title}>Fight</span>
             </Link>
-            <Typography variant="text16_regular" className={styles.text}>
+            <Typography
+              tag="p"
+              variant="text16_regular"
+              className={styles.text}
+            >
               Начни путь искателя приключений прямо сейчас!!!
             </Typography>
           </div>
@@ -38,7 +45,7 @@ const AuthLayout = ({
             href="https://github.com/Meow-Double"
             className={styles.link}
           >
-            ©By Meow-Double 2024
+            ©By Meow-Double {currentYear}
           </Link>
           {children}
         </div>

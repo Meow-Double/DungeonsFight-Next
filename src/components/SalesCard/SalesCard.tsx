@@ -11,10 +11,10 @@ export const SalesCard = () => {
         <img className={styles.image} src="/image.png" alt="" />
       </div>
       <div className={styles.content}>
-        <Typography variant="title20_bold" className={styles.title}>
+        <Typography tag="h2" variant="title20_bold" className={styles.title}>
           Книнга культа
         </Typography>
-        <Typography variant="text16_regular" className={styles.payment}>
+        <Typography tag="p" variant="text16_regular" className={styles.payment}>
           <span>Стоимость: {11}</span>
           <MoneySvg className={styles.icon} />
         </Typography>
