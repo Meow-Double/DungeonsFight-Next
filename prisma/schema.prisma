@@ -19,6 +19,7 @@ model User {
   energy    Int  @default(10)
   limitEnergy Int @default(10)
   money Int @default(10)
+  role Role @default(USER) 
 
   bag      BagItem[]
 
@@ -78,4 +79,9 @@ model DungeonAdward {
 
     thing         Thing       @relation(fields: [thingId], references: [id])
     thingId       Int
+}
+
+enum Role { 
+  USER 
+  ADMIN
 }

@@ -1,7 +1,10 @@
 "use client";
 
+import clsx from "clsx";
+
 import { useAuth } from "@/src/store";
 import { Baner, Typography } from "@/src/ui/components";
+import { STATICS } from "@/src/utils/constants";
 
 import { RarityStatistics } from "./components";
 
@@ -14,6 +17,7 @@ interface ProfileInfoProps {
   baner: string;
   types: RareStatistics;
   id: number;
+  role: "ADMIN" | "USER";
 }
 
 export const ProfileInfo = ({
@@ -23,6 +27,7 @@ export const ProfileInfo = ({
   baner,
   types,
   id,
+  role,
 }: ProfileInfoProps) => {
   const user = useAuth((state) => state.user);
   return (
@@ -31,9 +36,19 @@ export const ProfileInfo = ({
       classNameImg={styles.image}
       className={styles.baner}
     >
-      <div className={styles.badge}>admin</div>
+      <div
+        className={clsx(styles.badge, {
+          [styles.admin]: role === "ADMIN",
+        })}
+      >
+        {role === "ADMIN" ? "admin" : "user"}
+      </div>
       <div className={styles.info}>
-        <img className={styles.avatarka} src={avatarUrl} alt="avatarka" />
+        <img
+          className={styles.avatarka}
+          src={avatarUrl ?? STATICS.AVATARKA}
+          alt="avatarka"
+        />
         <div>
           <div className={styles.personal_data}>
             <Typography tag="h2" variant="title20_bold">
@@ -45,7 +60,11 @@ export const ProfileInfo = ({
               </Typography>
             )}
           </div>
-          <div>
+          <div
+            className={clsx({
+              [styles.another_user]: user?.id !== id,
+            })}
+          >
             <RarityStatistics types={types} />
           </div>
         </div>

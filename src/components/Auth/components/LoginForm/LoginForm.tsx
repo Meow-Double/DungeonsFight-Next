@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Cookies from "js-cookie";
 
 import { useAuth } from "@/src/store";
 import { Button, Input, Typography } from "@/src/ui/components";
@@ -37,7 +38,8 @@ export const LoginForm = () => {
   useEffect(() => {
     if (data) {
       setUser(data);
-      localStorage.setItem("token", data.token);
+      Cookies.set("token", data.token);
+      // localStorage.setItem("token", data.token);
       router.replace(ROUTES.MAIN);
     }
   }, [data]);

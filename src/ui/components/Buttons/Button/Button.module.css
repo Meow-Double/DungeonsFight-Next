@@ -27,7 +27,6 @@
   background-color: var(--primary-color9);
   color: var(--section-color);
 
-
   &:hover {
     background-color: var(--primary-color8);
   }
@@ -41,7 +40,6 @@
   border-radius: 4px;
   background-color: var(--accent-color);
 
-
   &:hover {
     background-color: var(--accent-color8);
   }
@@ -54,4 +52,17 @@
   &:hover {
     background-color: #2e2e2e;
   }
+}
+
+.disabled {
+  background-color: var(--primary-color4);
+  cursor: wait;
+}
+
+.disabled:hover {
+  background-color: var(--primary-color4);
+}
+
+.disabled:active {
+  transform: translateY(0);
 }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Container, Typography } from "@/src/ui/components";
-import { ROUTES } from "@/src/utils/constants";
+import { ROUTES, STATICS } from "@/src/utils/constants";
 import { getCurrentYear } from "@/src/utils/helpers";
 
 import styles from "./layout.module.css";
@@ -24,8 +24,8 @@ const AuthLayout = ({
         <div className={styles.inner}>
           <img
             className={styles.background}
-            src="https://w0.peakpx.com/wallpaper/742/475/HD-wallpaper-beast-s-dungeon-dungeon-animation-beast-beauty-disney.jpg"
-            alt=""
+            src={STATICS.BACKGROUND_AUTH}
+            alt="background"
           />
           <div className={styles.text_block}>
             <Link href={ROUTES.MAIN} className={styles.title}>

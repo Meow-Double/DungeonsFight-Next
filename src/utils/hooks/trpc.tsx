@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink, loggerLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
+import Cookies from "js-cookie";
 
+// import cookie from 'cookie';
 import type { AppRouter } from "@/server/routes";
 
 export const trpc = createTRPCReact<AppRouter>();
@@ -26,16 +28,8 @@ function getBaseUrl() {
 
 export const TRPCProvider = (props: { children: React.ReactNode }) => {
   const [queryClient] = useState(() => new QueryClient());
-  const [token, setToken] = useState<string | null>(null);
-  // const user = useAuth((state) => state.user);
-  // const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedToken = localStorage.getItem("token");
-      setToken(storedToken);
-    }
-  }, []);
+  const token = Cookies.get("token");
 
   const [trpcClient] = useState(() =>
     trpc.createClient({

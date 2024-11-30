@@ -20,7 +20,7 @@ interface ProfilePageProps {
 const ProfilePage = async ({ params }: ProfilePageProps) => {
   const { id } = await params;
   const user = await caller.getUser({ params: { id: Number(id) } });
-  console.log(user);
+
   const bag = await caller.getUserBag({
     params: { userId: Number(id) },
   });
@@ -31,6 +31,7 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
     <Container>
       <div>
         <ProfileInfo
+          role={user?.role}
           types={types}
           username={user?.username}
           avatarUrl={user?.avatarUrl}

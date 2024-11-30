@@ -1,5 +1,5 @@
 import { Baner } from "@/src/ui/components";
-import { IMAGES } from "@/src/utils/constants";
+import { STATICS } from "@/src/utils/constants";
 
 import { InfoBlock } from "./components";
 
@@ -18,7 +18,7 @@ export const DungeonInfo = ({
 }: DungeonInfoProps) => {
   return (
     <Baner
-      banerImage={baner ?? IMAGES.BANER}
+      banerImage={baner ?? STATICS.BANER}
       classNameImg={styles.background}
       className={styles.baner}
     >

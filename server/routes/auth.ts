@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { z } from "zod";
 
 import { prisma } from "@/prisma";
+import { STATICS } from "@/src/utils/constants";
 
 import { checkAuth, trpc } from "../utils";
 
@@ -34,8 +35,8 @@ export const authRouter = trpc.router({
           email,
           username,
           password: hash,
-          baner: "http://localhost:3000/uploads/user-static/baner.jpg",
-          avatarUrl: "http://localhost:3000/uploads/user-static/avatarka-1.jpg",
+          baner: STATICS.BANER,
+          avatarUrl: STATICS.AVATARKA,
         };
 
         const currentUser = await prisma.user.create({
@@ -97,7 +98,15 @@ export const authRouter = trpc.router({
           energy: user.energy,
           limitEnergy: user.limitEnergy,
           money: user.money,
+          role: user.role,
         };
+
+        // Работа с coockie (Создаём и сохраняем)
+        // await fetch("http://localhost:3000/api/setCookie", {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify({ token }),
+        // });
 
         return { ...userWithoutPassword, token };
       } catch (error) {

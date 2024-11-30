@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Cookies from "js-cookie";
 
 import { trpc } from "@/src/utils/hooks";
 
@@ -10,8 +11,7 @@ import { useBag } from "../store/bag";
 import { ROUTES } from "../utils/constants";
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const token =
-    typeof window !== "undefined" ? localStorage.getItem("token") : null;
+  const token = typeof window !== "undefined" ? Cookies.get("token") : null;
 
   const { setUser, user } = useAuth();
   const setBag = useBag((state) => state.setBag);

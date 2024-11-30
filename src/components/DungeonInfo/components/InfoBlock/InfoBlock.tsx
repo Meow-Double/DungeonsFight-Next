@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-import { ItemCard } from "@/src/components/ItemCard/ItemCard";
-import { useAuth } from "@/src/store";
-import { Badge, Button, Modal, Typography } from "@/src/ui/components";
+import { useAuth, useBag } from "@/src/store";
+import { Badge, Button, Typography } from "@/src/ui/components";
 import { AwardSvg, EnergySvg } from "@/src/ui/icons";
-import { IMAGES } from "@/src/utils/constants";
 import { trpc } from "@/src/utils/hooks";
+
+import { AdwardModal } from "../AdwardModal/AdwardModal";
 
 import styles from "./InfoBlock.module.css";
 
@@ -30,9 +30,12 @@ export const InfoBlock = ({
 }: InfoBlockProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, updateEnergy } = useAuth();
+  const addBagItem = useBag((state) => state.addBagItem);
   const { mutate, data } = trpc.getAdward.useMutation({});
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const inToDungeon = () => {
+    setIsDisabled(true);
     if (Number(user?.energy) >= Number(difficulty)) {
       mutate({
         difficulty: Number(difficulty),
@@ -44,12 +47,25 @@ export const InfoBlock = ({
   };
 
   useEffect(() => {
-    if (data) {
+    if (data !== undefined) {
       const newEnergy = Number(user?.energy) - Number(difficulty);
       updateEnergy(newEnergy);
       setIsOpen(true);
+      if (data) {
+        addBagItem({ ...data, quantity: 1 });
+      }
     }
   }, [data]);
+
+  useEffect(() => {
+    if (isDisabled) {
+      const timerId = setTimeout(() => {
+        setIsDisabled(false);
+      }, 1000);
+
+      return () => clearTimeout(timerId);
+    }
+  }, [isDisabled]);
 
   return (
     <>
@@ -78,27 +94,17 @@ export const InfoBlock = ({
             {type}
           </Typography>
         </div>
-        <Button onClick={inToDungeon} variant="accent">
+        <Button onClick={inToDungeon} variant="accent" disabled={isDisabled}>
           Войти
         </Button>
       </div>
-      <Modal isOpen={isOpen} onClick={() => setIsOpen(false)}>
-        <Typography tag="h2" variant="title20_bold">
-          Ваша награда
-        </Typography>
-        <br />
-        {Boolean(data) ? (
-          <ItemCard
-            {...data}
-            quantity={1}
-            image={data?.image ?? IMAGES.BANER}
-            type={data?.type ?? "ordinary"}
-          />
-        ) : (
-          // <AdwardCard {...data} />
-          <span>Ничего 😥</span>
-        )}
-      </Modal>
+      {isOpen && (
+        <AdwardModal
+          onClose={() => setIsOpen(false)}
+          item={data}
+          energe={Number(difficulty)}
+        />
+      )}
     </>
   );
 };

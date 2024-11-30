@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/src/store";
 import { Button, Container, Logo } from "@/src/ui/components";
 import { EnergySvg, MenuSvg, MoneySvg, ShopSvg } from "@/src/ui/icons";
-import { ROUTES } from "@/src/utils/constants";
+import { ROUTES, STATICS } from "@/src/utils/constants";
 
 import { DrawerMenu, ProfileBadge } from "./components";
 
@@ -55,8 +55,8 @@ export const Header = () => {
                   </div>
                   <ProfileBadge
                     id={Number(user?.id)}
-                    avatarUrl={user?.avatarUrl ?? ""}
-                    username={user?.username ?? ""}
+                    avatarUrl={user?.avatarUrl ?? STATICS.AVATARKA}
+                    username={String(user?.username)}
                   />
                 </>
               ) : (

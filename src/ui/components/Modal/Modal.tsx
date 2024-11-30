@@ -8,9 +8,9 @@ import styles from "./Modal.module.css";
 
 interface ModalProps {
   children: ReactNode;
-  title?: string;
+  title?: string | null;
   onClick: () => void;
-  isOpen: boolean;
+  isOpen?: boolean;
   className?: string;
 }
 
@@ -19,7 +19,7 @@ export const Modal = ({
   title,
   onClick,
   className,
-  isOpen,
+  isOpen = true,
 }: ModalProps) => {
   return (
     isOpen && (
@@ -27,7 +27,7 @@ export const Modal = ({
         <div className={styles.body} onClick={(e) => e.stopPropagation()}>
           <div className={styles.header}>
             {title && <h2 className={styles.title}>{title}</h2>}
-            <button onClick={onClick}>
+            <button onClick={onClick} className={styles.close_btn}>
               <CloseSvg />
             </button>
           </div>

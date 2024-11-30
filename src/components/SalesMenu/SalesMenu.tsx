@@ -10,6 +10,7 @@ import { MoneySvg } from "@/src/ui/icons";
 import { trpc, useCount } from "@/src/utils/hooks";
 
 import styles from "./SalesMenu.module.css";
+import { STATICS } from "@/src/utils/constants";
 
 export const SalesMenu = () => {
   const { dicrement, increment, count, setCount } = useCount(1);
@@ -38,8 +39,8 @@ export const SalesMenu = () => {
         const newBag = [...bag];
         const newObject: BagItemTypes = {
           desc: data.thing.desc ?? "",
-          id: data.thing.id ?? 1,
-          image: data.thing.image ?? "",
+          id: data.thing.id ?? 0,
+          image: data.thing.image ?? STATICS.ADWARD_IMAGE,
           payment: data.thing.payment ?? 0,
           quantity: data.thing.quantity ?? 0,
           title: data.thing.title ?? "",
@@ -58,13 +59,20 @@ export const SalesMenu = () => {
   }, [data]);
 
   return (
-    <>
-      {sellItem ? (
-        <div className={styles.board}>
-          <div className={styles.item}>
-            <span className={styles.text}>{sellItem.quantity}</span>
-            <img src={sellItem.image} alt="" className={styles.image} />
-          </div>
+      <div className={styles.board}>
+        <div className={styles.item}>
+          {sellItem && <span className={styles.text}>{sellItem.quantity}</span>}
+          {sellItem ? (
+            <img
+              src={sellItem?.image}
+              alt="active product"
+              className={styles.image}
+            />
+          ) : (
+            <span className={styles.text_choice}>Выберите предмет</span>
+          )}
+        </div>
+        {sellItem && (
           <div className={styles.content}>
             <Typography
               tag="h2"
@@ -86,31 +94,36 @@ export const SalesMenu = () => {
               <span>Стоимость: {sellItem.payment * count}</span>
               <MoneySvg className={styles.icon} />
             </Typography>
-            <div className={styles.count_input}>
+            <div className={styles.buttons}>
+              <div className={styles.count_input}>
+                <button
+                  className={styles.btn}
+                  onClick={dicrement}
+                  disabled={count === 1}
+                >
+                  -
+                </button>
+                <span className={styles.count_text}>{count}</span>
+                <button
+                  className={styles.btn}
+                  onClick={increment}
+                  disabled={count === sellItem.quantity}
+                >
+                  +
+                </button>
+              </div>
               <button
-                className={styles.btn}
-                onClick={dicrement}
-                disabled={count === 1}
+                className={styles.btn_all}
+                onClick={() => setCount(sellItem.quantity)}
               >
-                -
-              </button>
-              <span className={styles.count_text}>{count}</span>
-              <button
-                className={styles.btn}
-                onClick={increment}
-                disabled={count === sellItem.quantity}
-              >
-                +
+                всё
               </button>
             </div>
             <Button variant="accent" onClick={onSellItem}>
               Продать
             </Button>
           </div>
-        </div>
-      ) : (
-        <span>Выберите предмет для продажи</span>
-      )}
-    </>
+        )}
+      </div>
   );
 };

@@ -9,6 +9,7 @@ interface UserTypes {
   limitEnergy: number;
   money: number;
   bag: BagItemTypes[];
+  role: "ADMIN" | "USER";
 }
 
 interface ThingTypes {

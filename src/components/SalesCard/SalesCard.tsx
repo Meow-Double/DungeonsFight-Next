@@ -8,7 +8,7 @@ export const SalesCard = () => {
     <button className={styles.card}>
       <div className={styles.image_block}>
         <RareBadge variant="rounded" type="average" className={styles.rare} />
-        <img className={styles.image} src="/image.png" alt="" />
+        <img className={styles.image} src="/image.png" alt="product" />
       </div>
       <div className={styles.content}>
         <Typography tag="h2" variant="title20_bold" className={styles.title}>
