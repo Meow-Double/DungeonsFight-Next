@@ -5,4 +5,11 @@
 
 .text16_regular {
   color: var(--text-color);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.title16_semibold {
+  font-size: 16px;
+  font-weight: 600;
 }

@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const { data } = trpc.getMe.useQuery(undefined, {
     enabled: !!token && !user,
     retry: false,
+    staleTime: 200000,
   });
 
   const pathname = usePathname();
@@ -34,9 +35,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     if ((user && pathname === ROUTES.LOGIN) || pathname === ROUTES.REGISTER) {
       setUser(null);
       setBag([]);
-      localStorage.removeItem("token");
+      Cookies.remove("token");
     }
-  }, []);
+  }, [pathname]);
 
   return <>{children}</>;
 };

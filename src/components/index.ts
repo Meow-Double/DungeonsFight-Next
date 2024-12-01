@@ -4,7 +4,7 @@ export * from "./DungeonCard/DungeonCard";
 export * from "./DungeonDesc/DungeonDesc";
 export * from "./DungeonInfo/DungeonInfo";
 export * from "./Footer/Footer";
-export * from "./Header/Header";
+export * from "./Header/MainHeader/Header";
 export * from "./ItemCard/ItemCard";
 export * from "./ProfileBag/ProfileBag";
 export * from "./ProfileInfo/ProfileInfo";

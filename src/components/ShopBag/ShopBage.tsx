@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 
 import { useBag } from "@/src/store/bag";
@@ -14,17 +14,22 @@ import styles from "./ShopBage.module.css";
 
 export const ShopBage = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const setSellItem = useSellItem((state) => state.setSellItem);
+  const { sellItem, setSellItem } = useSellItem((state) => state);
   const bag = useBag((state) => state.bag);
 
   const onClickCard = (index: number) => {
     setActiveIndex(index);
     const findItem: BagItemTypes = bag[index];
     if (findItem) {
-      console.log(findItem);
       setSellItem(findItem);
     }
   };
+
+  useEffect(() => {
+    if (!sellItem) {
+      setActiveIndex(null);
+    }
+  }, [sellItem]);
 
   return (
     <div>

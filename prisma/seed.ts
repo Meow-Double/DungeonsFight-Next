@@ -1,6 +1,6 @@
 import { hashSync } from "bcrypt";
 
-import { DungeonAdwards, Dungeons, ThingItems } from "./constants";
+import { DungeonAdwards, Dungeons, News, ThingItems } from "./constants";
 import { prisma } from "./";
 async function generateData() {
   await prisma.user.createMany({
@@ -58,6 +58,10 @@ async function generateData() {
 
   await prisma.dungeonAdward.createMany({
     data: DungeonAdwards,
+  });
+
+  await prisma.new.createMany({
+    data: News,
   });
 }
 

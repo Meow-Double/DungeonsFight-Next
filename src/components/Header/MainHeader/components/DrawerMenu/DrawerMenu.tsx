@@ -37,8 +37,8 @@ const MenuItems = [
   },
   {
     id: 3,
-    title: "Игроки",
-    link: ROUTES.PLAYERS,
+    title: "Пользователи",
+    link: ROUTES.USERS,
     icon: (className?: string) => <UsersSvg className={className} />,
   },
   {

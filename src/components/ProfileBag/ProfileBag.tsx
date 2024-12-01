@@ -15,7 +15,7 @@ export const ProfileBag = ({ bag }: ProfileBagProps) => {
       <div className={styles.title}>
         <BagSvg />
         <Typography tag="h2" variant="title20_bold">
-          Ваш рюкзак: {!Boolean(bag.length) && "Пустой"}
+          Рюкзак: {!Boolean(bag.length) && "Пустой"}
         </Typography>
       </div>
       {Boolean(bag.length) && (

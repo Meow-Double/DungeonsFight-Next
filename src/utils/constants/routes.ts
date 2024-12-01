@@ -8,7 +8,7 @@ export const ROUTES = {
   PROFILE: "/profile",
   NEWS: "/news",
   HELP: "/help",
-  PLAYERS: "/players",
+  USERS: "/users",
 };
 
 type RouteType = (typeof ROUTES)[keyof typeof ROUTES];

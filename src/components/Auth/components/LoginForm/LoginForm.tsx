@@ -23,6 +23,7 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
+    mode: "onBlur",
   });
   const setUser = useAuth((state) => state.setUser);
   const router = useRouter();

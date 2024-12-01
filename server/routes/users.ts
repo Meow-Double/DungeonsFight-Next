@@ -28,6 +28,15 @@ export const usersRouter = trpc.router({
         throw error;
       }
     }),
+  getUsers: trpc.procedure.query(async () => {
+    try {
+      const user = await prisma.user.findMany();
+
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }),
 
   //   createUser: trpc.procedure
   //     .input(

@@ -4,6 +4,7 @@ import { adwardRouter } from "./adward";
 import { authRouter } from "./auth";
 import { bagRouter } from "./bag";
 import { dungeonsRouter } from "./dungeon";
+import { newsRouter } from "./news";
 import { shopRouter } from "./shop";
 import { usersRouter } from "./users";
 
@@ -15,7 +16,8 @@ export const appRouter = trpc.mergeRouters(
   dungeonsRouter,
   authRouter,
   adwardRouter,
-  shopRouter
+  shopRouter,
+  newsRouter
 );
 export type AppRouter = typeof appRouter;
 

@@ -16,7 +16,7 @@ import styles from "./Header.module.css";
 export const Header = () => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   const user = useAuth((state) => state.user);
-  console.log(user);
+
   const router = useRouter();
 
   const onLogin = () => {

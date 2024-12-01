@@ -81,6 +81,18 @@ model DungeonAdward {
     thingId       Int
 }
 
+
+model New{
+    id            Int          @id @default(autoincrement())
+    image String
+    title String
+    text String
+    signature String
+    version String
+createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 enum Role { 
   USER 
   ADMIN
