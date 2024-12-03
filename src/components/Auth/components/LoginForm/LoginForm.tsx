@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Cookies from "js-cookie";
 
 import { useAuth } from "@/src/store";
-import { Button, Input, Typography } from "@/src/ui/components";
+import { Alert, Button, Input, Typography } from "@/src/ui/components";
 import { ROUTES } from "@/src/utils/constants";
 import { trpc } from "@/src/utils/hooks";
 
@@ -27,14 +27,7 @@ export const LoginForm = () => {
   });
   const setUser = useAuth((state) => state.setUser);
   const router = useRouter();
-
   const { mutate, data, error } = trpc.login.useMutation({});
-
-  useEffect(() => {
-    if (error) {
-      alert("Ошибка входа");
-    }
-  }, [error]);
 
   useEffect(() => {
     if (data) {
@@ -50,33 +43,45 @@ export const LoginForm = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <Typography tag="h3" variant="title20_bold">
-        Вход
-      </Typography>
-      <div className={styles.inputs}>
-        <Input
-          variant="primary"
-          label="Введите почту"
-          placeholder="user@gmail.com..."
-          type="email"
-          component="input"
-          {...register("email")}
-          error={errors.email?.message}
-        />
-        <Input
-          variant="primary"
-          label="Введите пароль"
-          placeholder="8e1G2rYp4..."
-          type="password"
-          component="input"
-          {...register("password")}
-          error={errors.password?.message}
-        />
-      </div>
-      <Button type="submit" variant="accent">
-        Войти в аккаунт
-      </Button>
-    </form>
+    <>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <Typography tag="h3" variant="title20_bold">
+          Вход
+        </Typography>
+        <div className={styles.inputs}>
+          <Input
+            variant="primary"
+            label="Введите почту"
+            placeholder="user@gmail.com..."
+            type="email"
+            component="input"
+            {...register("email")}
+            error={errors.email?.message}
+          />
+          <Input
+            variant="primary"
+            label="Введите пароль"
+            placeholder="8e1G2rYp4..."
+            type="password"
+            component="input"
+            {...register("password")}
+            error={errors.password?.message}
+          />
+        </div>
+        <Button type="submit" variant="accent">
+          Войти в аккаунт
+        </Button>
+      </form>
+      {
+        <Alert
+          isOpen={!!error?.message}
+          variant="default"
+          timeClose={3000}
+          type="error"
+        >
+          {error?.message}!
+        </Alert>
+      }
+    </>
   );
 };

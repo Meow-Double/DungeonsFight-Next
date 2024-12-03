@@ -1,4 +1,4 @@
-import { AuthProvider } from "@/src/providers";
+import { AuthProvider, StaminaProvider } from "@/src/providers";
 import { TRPCProvider } from "@/src/utils/hooks";
 
 import "../styles/index.css";
@@ -11,8 +11,11 @@ const RootLayout = ({
   return (
     <html lang="en">
       <body>
+        <div id="modal" />
         <TRPCProvider>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <StaminaProvider>{children}</StaminaProvider>
+          </AuthProvider>
         </TRPCProvider>
       </body>
     </html>

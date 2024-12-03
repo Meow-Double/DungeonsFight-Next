@@ -45,7 +45,7 @@ export const ShopBage = () => {
               [styles.active]: index === activeIndex,
             })}
           >
-            <ItemCard {...item} />
+            <ItemCard {...item} isInfo={false} />
           </button>
         ))}
       </ul>

@@ -22,6 +22,7 @@ export const AdwardModal = ({ onClose, energe, item }: AdwardModalProps) => {
         {Boolean(item) ? (
           <div className={styles.adwar_inner}>
             <ItemCard
+              isInfo={false}
               quantity={1}
               image={item?.image ?? STATICS.ADWARD_IMAGE}
               type={item?.type ?? null}

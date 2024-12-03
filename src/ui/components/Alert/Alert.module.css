@@ -1,0 +1,22 @@
+.alert {
+  position: fixed;
+  z-index: 100;
+  top: 1%;
+  left: 50%;
+  max-width: 320px;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: var(--section-color);
+  box-shadow: 0 0 20px 2px rgb(0 0 0 / 30%);
+  transform: translateX(-50%);
+}
+
+
+.normal{
+    color: var(--primary-color9)
+}
+
+.error{
+    color: var(--accent-color)
+}
+

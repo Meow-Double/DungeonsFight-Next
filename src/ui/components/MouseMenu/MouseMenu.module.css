@@ -1,0 +1,18 @@
+.modal {
+  position: absolute;
+  z-index: 2;
+  width: 320px;
+  padding: 12px;
+  border-radius: 4px;
+  background-color: var(--section-color);
+}
+
+.left {
+  top: -100%;
+  left: 90%;
+}
+
+.right {
+  top: -120%;
+  right: 90%;
+}

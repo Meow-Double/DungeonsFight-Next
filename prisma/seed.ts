@@ -71,6 +71,7 @@ async function clearData() {
   await prisma.$executeRaw`TRUNCATE TABLE "Thing" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "BagItem" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "DungeonAdward" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "New" RESTART IDENTITY CASCADE`;
 }
 
 async function main() {

@@ -20,6 +20,7 @@ model User {
   limitEnergy Int @default(10)
   money Int @default(10)
   role Role @default(USER) 
+  timeStamina String?
 
   bag      BagItem[]
 

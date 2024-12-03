@@ -21,7 +21,7 @@ export const ProfileBag = ({ bag }: ProfileBagProps) => {
       {Boolean(bag.length) && (
         <ul className={styles.items}>
           {bag.map((bagItem) => (
-            <ItemCard key={bagItem.id} {...bagItem} />
+            <ItemCard isInfo key={bagItem.id} {...bagItem} />
           ))}
         </ul>
       )}

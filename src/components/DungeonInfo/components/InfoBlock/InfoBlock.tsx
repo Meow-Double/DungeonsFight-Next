@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { useAuth, useBag } from "@/src/store";
-import { Badge, Button, Typography } from "@/src/ui/components";
+import { Alert, Badge, Button, Typography } from "@/src/ui/components";
 import { AwardSvg, EnergySvg } from "@/src/ui/icons";
 import { trpc } from "@/src/utils/hooks";
 
@@ -29,10 +29,12 @@ export const InfoBlock = ({
   id,
 }: InfoBlockProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, updateEnergy } = useAuth();
+  const user = useAuth((state) => state.user);
+  const setUser = useAuth((state) => state.setUser);
   const addBagItem = useBag((state) => state.addBagItem);
   const { mutate, data } = trpc.getAdward.useMutation({});
   const [isDisabled, setIsDisabled] = useState(false);
+  const [isOpenAlert, setIsOpenAlert] = useState(false);
 
   const inToDungeon = () => {
     setIsDisabled(true);
@@ -42,17 +44,27 @@ export const InfoBlock = ({
         dungeonId: id,
       });
     } else {
-      alert("У вас недостаточно энергии");
+      setIsOpenAlert(true);
     }
   };
 
   useEffect(() => {
+    if (Number(user?.energy) >= Number(difficulty)) {
+      setIsOpenAlert(false);
+    }
+  }, [user]);
+
+  useEffect(() => {
     if (data !== undefined) {
       const newEnergy = Number(user?.energy) - Number(difficulty);
-      updateEnergy(newEnergy);
+      setUser({
+        ...user,
+        energy: newEnergy,
+        timeStamina: data.timeStamina,
+      });
       setIsOpen(true);
-      if (data) {
-        addBagItem({ ...data, quantity: 1 });
+      if (data.adward) {
+        addBagItem({ ...data.adward, quantity: 1 });
       }
     }
   }, [data]);
@@ -94,17 +106,29 @@ export const InfoBlock = ({
             {type}
           </Typography>
         </div>
-        <Button onClick={inToDungeon} variant="accent" disabled={isDisabled}>
+        <Button
+          onClick={inToDungeon}
+          variant="accent"
+          disabled={isDisabled || isOpenAlert}
+        >
           Войти
         </Button>
       </div>
       {isOpen && (
         <AdwardModal
           onClose={() => setIsOpen(false)}
-          item={data}
+          item={data?.adward}
           energe={Number(difficulty)}
         />
       )}
+      <Alert
+        isOpen={isOpenAlert}
+        variant="default"
+        type="error"
+        timeClose={2000}
+      >
+        У вас недостаточно энергии
+      </Alert>
     </>
   );
 };

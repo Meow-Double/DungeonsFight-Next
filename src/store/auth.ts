@@ -2,8 +2,9 @@
 
 import { create } from "zustand";
 
-interface User extends UserTypes {
+interface User extends Omit<UserTypes, "timeStamina"> {
   token: string;
+  timeStamina: string | null;
 }
 
 interface UseAuthTypes {

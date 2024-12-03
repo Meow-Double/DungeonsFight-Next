@@ -73,17 +73,16 @@ export const DrawerMenu = ({ isOpenDrawer, closeDrawer }: DrawerMenuProps) => {
             <span>{item.title}</span>
           </Link>
         ))}
-        {user ? (
-          <Link href={ROUTES.LOGIN} className={styles.item}>
+        {user?.role === "ADMIN" && (
+          <Link href={ROUTES.ADMIN} className={styles.item}>
             <LogoutSvg className={styles.icon} />
-            <span>Выход</span>
-          </Link>
-        ) : (
-          <Link href={ROUTES.LOGIN} className={styles.item}>
-            <LogoutSvg className={styles.icon} />
-            <span>Вход</span>
+            <span>Админка</span>
           </Link>
         )}
+        <Link href={ROUTES.LOGIN} className={styles.item}>
+          <LogoutSvg className={styles.icon} />
+          <span>{user ? "выход" : "вход"}</span>
+        </Link>
       </nav>
     </Drawer>
   );

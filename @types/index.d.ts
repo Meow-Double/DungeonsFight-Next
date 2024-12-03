@@ -10,6 +10,7 @@ interface UserTypes {
   money: number;
   bag: BagItemTypes[];
   role: "ADMIN" | "USER";
+  timeStamina: string;
 }
 
 interface ThingTypes {

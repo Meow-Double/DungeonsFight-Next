@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import { prisma } from "@/prisma";
 
-import { checkAuth, getRandomAdward, trpc } from "../utils";
+import { checkAuth, getISO, getRandomAdward, trpc } from "../utils";
 
 export const adwardRouter = trpc.router({
   getAdward: trpc.procedure
@@ -57,7 +57,20 @@ export const adwardRouter = trpc.router({
           },
         });
 
-        console.log(dungeon?.dungeonAdwards);
+        const isoDate = getISO();
+        //Проверяем ISO время для отслеживание энергии
+        if (!user.timeStamina) {
+          //Создаём ISO время для отслеживание энергии
+          await prisma.user.update({
+            where: {
+              id: userId,
+            },
+            data: {
+              timeStamina: isoDate,
+            },
+          });
+        }
+
         // Получаем рандомную вещь из подземелья
         const randomAdward: {
           id: number;
@@ -67,7 +80,8 @@ export const adwardRouter = trpc.router({
         } = getRandomAdward(dungeon?.dungeonAdwards ?? []);
 
         // Проверяем, если вещи нет, значит возвращаем пользователю сообщение -  "Пусто"
-        if (Object.keys(randomAdward).length === 0) return null;
+        if (Object.keys(randomAdward).length === 0)
+          return { adward: null, timeStamina: isoDate };
 
         // Если вешь найдена, получаем её со всеми нужными данными
         const adward = await prisma.thing.findUnique({
@@ -95,7 +109,7 @@ export const adwardRouter = trpc.router({
           });
 
           // Возвращаем пользователю награду
-          return adward;
+          return { adward, timeStamina: isoDate };
         }
 
         // Вещи в рюкзаке нет, if не отработал. Создаём новый объект - bagItem и заносим в бд
@@ -108,8 +122,9 @@ export const adwardRouter = trpc.router({
         await prisma.bagItem.create({
           data: newBagItem,
         });
+
         // Возвращаем пользователю награду
-        return adward;
+        return { adward, timeStamina: isoDate };
       } catch (error) {
         throw error;
       }
